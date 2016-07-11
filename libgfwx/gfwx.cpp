@@ -1,4 +1,4 @@
-#include "gfwx.hpp"
+#include <gfwx/gfwx.hpp>
 
 using namespace GFWX;
 

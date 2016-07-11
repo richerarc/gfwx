@@ -1,0 +1,12 @@
+set(MODULE_NAME "gfwx")
+set(MODULE_PREFIX "LIBGFWX")
+
+set(${MODULE_PREFIX}_HEADERS "")
+
+set(${MODULE_PREFIX}_SOURCES
+        gfwx.cpp)
+
+add_library(${MODULE_NAME} STATIC ${${MODULE_PREFIX}_SOURCES} ${${MODULE_PREFIX}_HEADERS})
+
+set_target_properties(${MODULE_NAME} PROPERTIES OUTPUT_NAME "gfwx")
+set_property(TARGET ${MODULE_NAME} PROPERTY FOLDER "gfwx/lib")
