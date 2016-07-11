@@ -1,0 +1,12 @@
+set(MODULE_NAME "cgfwx")
+set(MODULE_PREFIX "LIBCGFWX")
+
+set(${MODULE_PREFIX}_HEADERS "")
+
+set(${MODULE_PREFIX}_SOURCES
+        cgfwx.c)
+
+add_library(${MODULE_NAME} STATIC ${${MODULE_PREFIX}_SOURCES} ${${MODULE_PREFIX}_HEADERS})
+
+set_target_properties(${MODULE_NAME} PROPERTIES OUTPUT_NAME "cgfwx")
+set_property(TARGET ${MODULE_NAME} PROPERTY FOLDER "cgfwx/lib")
