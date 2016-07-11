@@ -1,4 +1,21 @@
-# Compiling GFWX with g++ on ubuntu
+# Cmake build and test
+
+```
+git clone git@github.com:richerarc/gfwx
+
+cd gfwx
+
+cmake .
+
+make
+
+cd test/compresion
+
+./gfwx-compress <input-img> <output data> <img-decoded>
+
+```
+
+# Compiling GFWX with g++ without CMake
 
 ## 1) Create the static lib
 
