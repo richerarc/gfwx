@@ -5,7 +5,7 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
-#include "libgfwx/gfwx.hpp"
+#include <gfwx/gfwx.hpp>
 
 #define ULONGLONG unsigned long long
 
