@@ -1,11 +1,11 @@
 #include <iomanip>
 #include <fstream>
-#include <sys/time.h>
 
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
 #include <gfwx/gfwx.hpp>
+#include <cgfwx/cgfwx.h>
 
 #define ULONGLONG unsigned long long
 
