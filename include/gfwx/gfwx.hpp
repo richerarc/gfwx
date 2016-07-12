@@ -52,6 +52,7 @@
 #include <type_traits>
 #include <utility>
 #include <vector>
+#include <stdint.h>
 #if defined(_OPENMP)
 #include <omp.h>
 #endif

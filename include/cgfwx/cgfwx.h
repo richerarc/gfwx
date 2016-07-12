@@ -54,12 +54,12 @@ extern "C" {
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
+#include <stdint.h>
 #if defined(_OPENMP)
 #include <omp.h>
 #endif
 
-enum
-	{
+enum{
 		QualityMax = 1024,		// compress with QualityMax for 100% lossless, or less than QualityMax for lossy
 		ThreadIterations = 8,	// OMP settings tuned on my machine with large images
 		BitDepthAuto = 0, BlockDefault = 7, BlockMax = 30,
@@ -67,14 +67,27 @@ enum
 		IntentGeneric = 0, IntentMono = 1, IntentBayerRGGB = 2, IntentBayerBGGR = 3, IntentBayerGRBG = 4, IntentBayerGBRG = 5, IntentBayerGeneric = 6,
 		IntentRGB = 7, IntentRGBA = 8, IntentRGBApremult = 9, IntentBGR = 10, IntentBGRA = 11, IntentBGRApremult = 12, IntentCMYK = 13,
 		ResultOk = 0, ErrorOverflow = -1, ErrorMalformed = -2, ErrorTypeMismatch = -3
-	};
+};
 
-    typedef struct header Header;	// use the empty constructor to fetch headers before decompressing, and use the parameterized constructor when compressing
+typedef struct header Header;	// use the empty constructor to fetch headers before decompressing, and use the parameterized constructor when compressing
 
-    Header * Header_New();
-	Header * HeaderNew(int sizex, int sizey, int layers, int channels, int bitDepth, int quality,
-             int chromaScale, int blockSize, int filter, int quantization, int encoder, int intent);
+Header * Header_New();
+Header * HeaderNew(int sizex, int sizey, int layers, int channels, int bitDepth, int quality, int chromaScale, int blockSize, int filter, int quantization, int encoder, int intent);
 
+	
+typedef struct bits Bits;
+
+Bits* Bits_New(uint32_t * buffer, uint32_t * bufferEnd);
+
+uint32_t Bits_GetBits(Bits* ctx, int bits);
+
+void Bits_PutBits(Bits* ctx, uint32_t x, int bits);
+
+uint32_t Bits_GetZeros(Bits* ctx, uint32_t maxZeros);
+
+void Bits_FlushWriteWord(Bits* ctx);
+
+void Bits_FlushReadWord(Bits* ctx);
 
 #ifdef __cplusplus
 }
