@@ -1,3 +1,6 @@
+#ifndef GFWX_H
+#define GFWX_H
+
 //  Good, Fast Wavelet Codec "GFWX" v1
 //  ----------------------------------
 //  December 1, 2015
@@ -891,3 +894,5 @@ namespace GFWX
 		return isTruncated ? nextPointOfInterest : ResultOk;	// return next point of interest if the data was truncated prior to completing request
 	}
 }
+
+#endif
