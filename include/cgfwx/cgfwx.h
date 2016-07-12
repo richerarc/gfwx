@@ -69,13 +69,10 @@ enum
 		ResultOk = 0, ErrorOverflow = -1, ErrorMalformed = -2, ErrorTypeMismatch = -3
 	};
 
-    struct Header	// use the empty constructor to fetch headers before decompressing, and use the parameterized constructor when compressing
-	{
-		int sizex, sizey, layers, channels, bitDepth, quality, chromaScale, blockSize, filter, quantization, encoder, intent, version, isSigned;
-	};
+    typedef struct header Header;	// use the empty constructor to fetch headers before decompressing, and use the parameterized constructor when compressing
 
-    void Header_New(Header *ctx);
-	void HeaderNew(Header *ctx, int sizex, int sizey, int layers, int channels, int bitDepth, int quality,
+    Header * Header_New();
+	Header * HeaderNew(int sizex, int sizey, int layers, int channels, int bitDepth, int quality,
              int chromaScale, int blockSize, int filter, int quantization, int encoder, int intent);
 
 
