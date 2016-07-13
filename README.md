@@ -18,7 +18,7 @@ make
 
 cd test/compresion
 
-./gfwx-compress <input-img> <output data> <img-decoded>
+./gfwx-compress <input-img> <output data> <img-decompressed>
 
 ```
 
