@@ -1,5 +1,13 @@
 #include <cgfwx/cgfwx.h>
 
+#define square(a, b) (a * b)
+
+#define median(a, b, c) ((a < b) ? ((c > b) ? b : (c < a) ? a : c) : ((c > a) ? a : (c < b) ? b : c))
+
+#define roundFraction(num, denom) ((num < 0) ? ((num - denom / 2) / denom) : ((num + denom / 2) / denom))
+
+#define cubic(c0, c1, c2, c3) (median((roundFraction((-c0 + 9 * (c1 + c2) - c3), 16)), c1, c2))
+
 //////////// ---------- Header ---------- ////////////
 
 struct header{
@@ -150,3 +158,26 @@ void Bits_FlushReadWord(Bits* ctx){
 	++ctx->buffer;
 	ctx->indexBits = 0;
 }
+
+//////////// ---------- Image ---------- ////////////b
+
+struct image{
+		uint8_t * data;
+		int sizex;
+		int sizey;
+};
+
+Image * Image_New(uint8_t * data, int sizex, int sizey){
+	Image * ctx = malloc(sizeof(Image));
+
+	if(!ctx)
+		return NULL;
+	
+	ctx->data = data;
+	ctx->sizex = sizex;
+	ctx->sizey = sizey;
+
+	return ctx;
+}
+
+uint8_t * Image_GetLine (Image * ctx, int y) { return ctx->data + y * ctx->sizex; }

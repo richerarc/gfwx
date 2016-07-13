@@ -7,7 +7,7 @@ Makefile
 
 
 ##build
-
+build/
 *.o
 *.a
 

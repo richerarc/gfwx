@@ -89,6 +89,12 @@ void Bits_FlushWriteWord(Bits* ctx);
 
 void Bits_FlushReadWord(Bits* ctx);
 
+typedef struct image Image;	// handy wrapper for 2D image data
+
+Image * Image_New(uint8_t * data, int sizex, int sizey);
+
+uint8_t * Image_GetLine (Image * ctx, int y);
+
 #ifdef __cplusplus
 }
 #endif
