@@ -181,3 +181,30 @@ Image * Image_New(uint8_t * data, int sizex, int sizey){
 }
 
 uint8_t * Image_GetLine (Image * ctx, int y) { return ctx->data + y * ctx->sizex; }
+
+
+/*----------MACROS------------*/
+
+// template<int pot> void unsignedCode(uint32_t x, Bits & stream)	// limited length power-of-two Golomb-Rice code
+// 	{
+// 		uint32_t const y = x >> (pot);
+// 		if (y >= 12)
+// 		{
+// 			stream.putBits(0, 12);	// escape to larger code
+// 			unsignedCode<pot < 20 ? pot + 4 : 24>(x - (12 << (pot)), stream);
+// 		}
+// 		else
+// 			stream.putBits((1 << (pot)) | (x & ~(~0u << (pot))), y + 1 + pot);	// encode x / 2^pot in unary followed by x % 2^pot in binary
+// 	}
+
+#define unsignedCode(pot, x, stream) \
+		({ \
+			uint32_t const y = x >> (pot); \
+ 			if (y >= 12) \
+ 			{ \
+ 				Bits_PutBits(stream, 0, 12); \
+				unsignedCode(((pot < 20) ? pot + 4 : 24),(x - (12 << (pot)), stream); \
+ 			} \
+ 			else \
+ 				Bits_PutBits(stream, (1 << (pot)) | (x & ~(~0u << (pot))), y + 1 + pot); \
+		})
