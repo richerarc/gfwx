@@ -1,6 +1,6 @@
 #GFWX
 
-gfwx is for goof fast wavelet codec. This is a implementation in C based on the code found at gfwx.org 
+gfwx is for good fast wavelet codec. This is a implementation in C based on the code found at gfwx.org 
 
 ### IMPORTANT NOTE : WIP
 
